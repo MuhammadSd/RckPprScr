@@ -10,7 +10,7 @@ function getCompChoice(){
     } else {
     return "Scissor" }
   }
-
+//what if i do this then commit?
 function getHumanChoice (x){
     let choose = prompt("What are you choosing!")
     choose = choose.toLowerCase()
