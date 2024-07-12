@@ -79,3 +79,5 @@ playGames(1);
 
 const Rock = document.getElementById("Rock")
 Rock.addEventListener(getHumanChoice())
+
+// 
