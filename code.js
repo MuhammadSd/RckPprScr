@@ -12,8 +12,9 @@ function getCompChoice(){
   }
 //what if i do this then commit?
 function getHumanChoice (x){
-    // let choose = prompt("What are you choosing!")
-    // choose = choose.toLowerCase()
+    let choose = ("What are you choosing!")
+    choose = choose.toLowerCase()
+
 
     if (choose === "rock"){
         return "Rock"
@@ -77,7 +78,11 @@ function playGames (x){
 playGames(1);
 
 
-const Rock = document.getElementById("Rock")
-Rock.addEventListener(getHumanChoice())
+const rockButton = document.getElementById("chooseRock")
+const paperButton = document.getElementById("choosePaper")
+const scissorButton = document.getElementById("chooseScissor")
 
+    function chooseRock(){
+        getHumanChoice() === "Rock"
+    }
 // 
