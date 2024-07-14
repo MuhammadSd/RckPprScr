@@ -34,22 +34,23 @@ function updateScores(result) {
 }
 
 function playGames (humanChoice){
- if (humanScore === 5 || compScore === 5){
+ if (humanScore < 5 && compScore < 5){
     const compChoice = getCompChoice();
     const roundResult = playRound(humanChoice, compChoice);
     updateScores(roundResult);
     roundNumber ++;
     displayResults( roundNumber, humanChoice, compChoice, roundResult );
     
-} 
-   endGame() 
+} else {
+    return endGame()
+}
+    
 }
 
 
 function endGame() {
-// Example of what happens when the game ends
-results.innerHTML += `<p>Game Over. Final Score - Your score: ${humanScore}, Computer's score: ${compScore}</p>`;
-// You can also add logic here to reset the game if needed
+    results.innerHTML += `<p>Game Over. Final Score - Your score: ${humanScore},
+    Computer's score: ${compScore}</p>`;
 }
 
 // -----------
