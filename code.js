@@ -1,5 +1,6 @@
 let humanScore = 0
 let compScore = 0
+let roundNumber = 0
 const results = document.getElementById("textForResults")
 
 function getCompChoice(){
@@ -22,41 +23,7 @@ function playRound (humanChoice, computerChoice) {
         return "You won";
     } else {
         return "You lose"
-} 
-}
-
-
-
-
-
-
-
-function playGames (humanChoice){
-    for (let i = 0; i < 5; i++){
-    const compChoice = getCompChoice();
-    const roundResult = playRound(humanChoice, compChoice);
-    updateScores(roundResult);
-    
-    }displayResults(humanChoice, getCompChoice, roundResult);
-}
-
-// -----------
-
-function buttons(){
-    const rockButton = document.getElementById("chooseRock")
-    const paperButton = document.getElementById("choosePaper")
-    const scissorButton = document.getElementById("chooseScissor")
-        rockButton.addEventListener('click',() =>{
-            playGames('Rock')
-    });
-        paperButton.addEventListener('click',() =>{
-            playGames('paper')
-    });
-        scissorButton.addEventListener('click',() =>{
-            playGames('Scissor')
-    });    
-}
-
+}}
 
 function updateScores(result) {
     if (result === "You won") {
@@ -66,12 +33,47 @@ function updateScores(result) {
     }
 }
 
-function displayResults(humanChoice, compChoice, roundResult) {
-    const roundNumber = humanScore + compScore;
-    results.innerHTML += `<p>Round ${roundNumber }: You chose ${humanChoice}, 
-    Computer chose ${compChoice}. Result: ${roundResult}. Your score: ${humanScore},
-    Computer's score: ${compScore}</p>`;
+function playGames (humanChoice){
+ if (humanScore === 5 || compScore === 5){
+    const compChoice = getCompChoice();
+    const roundResult = playRound(humanChoice, compChoice);
+    updateScores(roundResult);
+    roundNumber ++;
+    displayResults( roundNumber, humanChoice, compChoice, roundResult );
     
+} 
+   endGame() 
 }
 
-buttons()
+
+function endGame() {
+// Example of what happens when the game ends
+results.innerHTML += `<p>Game Over. Final Score - Your score: ${humanScore}, Computer's score: ${compScore}</p>`;
+// You can also add logic here to reset the game if needed
+}
+
+// -----------
+
+function buttons(){
+    const rockButton = document.getElementById("chooseRock")
+    const paperButton = document.getElementById("choosePaper")
+    const scissorButton = document.getElementById("chooseScissor")
+    
+        rockButton.addEventListener('click',() =>{
+            playGames('Rock')
+    });
+        paperButton.addEventListener('click',() =>{
+            playGames('Paper')
+    });
+        scissorButton.addEventListener('click',() =>{
+            playGames('Scissor')
+    });    
+}
+
+function displayResults(roundNumber, humanChoice, compChoice, roundResult) {
+    results.innerHTML += `<p> <br>Round ${roundNumber}</br>: You chose  ${humanChoice}, 
+        Computer chose ${compChoice}. Result: ${roundResult}. Your score: ${humanScore},
+        Computer's score: ${compScore}</p>`;
+}
+
+buttons();
