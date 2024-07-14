@@ -50,7 +50,7 @@ function playGames (humanChoice){
 
 function endGame() {
     results.innerHTML += `<p>Game Over. Final Score - Your score: ${humanScore},
-    Computer's score: ${compScore}</p>`;
+    Computer's score: ${compScore}</p> <br>Reload page to play again!</br>`;
 }
 
 // -----------
@@ -72,7 +72,7 @@ function buttons(){
 }
 
 function displayResults(roundNumber, humanChoice, compChoice, roundResult) {
-    results.innerHTML += `<p> <br>Round ${roundNumber}</br>: You chose  ${humanChoice}, 
+    results.innerHTML = `<p> <br>Round ${roundNumber}</br>: You chose  ${humanChoice}, 
         Computer chose ${compChoice}. Result: ${roundResult}. Your score: ${humanScore},
         Computer's score: ${compScore}</p>`;
 }
