@@ -12,14 +12,13 @@ function getCompChoice(){
     return "Scissor" }
   }
 
-
 function playRound (humanChoice, computerChoice) {
     if( humanChoice === computerChoice){
         return "Its a draw"
-    } else if (humanChoice === "Rock" && computerChoice === "Scissor" ||
-                humanChoice === "Scissor" && computerChoice === "Paper" ||
-                humanChoice === 'Paper' && computerChoice === "Rock"
-    ){ 
+    } else if  ((humanChoice === "Rock" && computerChoice === "Scissor") ||
+                (humanChoice === "Scissor" && computerChoice === "Paper") ||
+                (humanChoice === 'Paper' && computerChoice === "Rock")
+){ 
         return "You won";
     } else {
         return "You lose"
@@ -27,16 +26,19 @@ function playRound (humanChoice, computerChoice) {
 }
 
 
+
+
+
+
+
 function playGames (humanChoice){
+    for (let i = 0; i < 5; i++){
     const compChoice = getCompChoice();
     const roundResult = playRound(humanChoice, compChoice);
     updateScores(roundResult);
-
-    displayResults(humanChoice, compChoice, roundResult);
+    
+    }displayResults(humanChoice, getCompChoice, roundResult);
 }
-
-
-
 
 // -----------
 
@@ -44,18 +46,15 @@ function buttons(){
     const rockButton = document.getElementById("chooseRock")
     const paperButton = document.getElementById("choosePaper")
     const scissorButton = document.getElementById("chooseScissor")
-
-        rockButton.addEventListener('click',e =>{
+        rockButton.addEventListener('click',() =>{
             playGames('Rock')
-
     });
-        paperButton.addEventListener('click',e =>{
+        paperButton.addEventListener('click',() =>{
             playGames('paper')
     });
-        scissorButton.addEventListener('click',e =>{
+        scissorButton.addEventListener('click',() =>{
             playGames('Scissor')
-    });
-    
+    });    
 }
 
 
@@ -69,7 +68,10 @@ function updateScores(result) {
 
 function displayResults(humanChoice, compChoice, roundResult) {
     const roundNumber = humanScore + compScore;
-    results.innerHTML += `<p>Round ${roundNumber}: You chose ${humanChoice}, Computer chose ${compChoice}. Result: ${roundResult}. Your score: ${humanScore}, Computer's score: ${compScore}</p>`;
+    results.innerHTML += `<p>Round ${roundNumber }: You chose ${humanChoice}, 
+    Computer chose ${compChoice}. Result: ${roundResult}. Your score: ${humanScore},
+    Computer's score: ${compScore}</p>`;
+    
 }
 
 buttons()
